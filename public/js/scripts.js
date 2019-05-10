@@ -8,7 +8,11 @@
 //     console.log(data.reverse());
 //   });
 
-document.getElementById('view-task').addEventListener('click', getTitle);
+document.getElementById('view-all').addEventListener('click', getTitle);
+document.getElementById('completedToDo').addEventListener('click', completed);
+document.getElementById('tasksToDo').addEventListener('click', toDo);
+
+const jsonApi = 'http://localhost:3000/api/todos';
 
 function getTitle() {
   // fetch('../data.json')
@@ -19,10 +23,11 @@ function getTitle() {
   //     console.log(data.reverse());
   //   });
   // fetch('../data.json')
-  fetch('http://localhost:3000/api/todos')
+  // fetch('http://localhost:3000/api/todos')
+  fetch(jsonApi)
     .then((res) => res.json())
     .then((data) => {
-      let output = '<p>To do:</p>';
+      let output = '<p>All To Do:</p>';
       data.forEach(function (task) {
         output += `
           <ul>
@@ -33,3 +38,40 @@ function getTitle() {
       document.getElementById('display').innerHTML = output;
     });
 }
+
+
+function completed() {
+  fetch(jsonApi)
+    .then((res) => res.json())
+    .then((data) => {
+      let output = '<p>Completed:</p>';
+      data.forEach(function (task) {
+        output += `
+        <ul>
+          <li>Completed: ${task.title}</li>
+          <li>Status: ${task.completed}</li>
+        </ul>
+      `;
+      });
+      document.getElementById('display').innerHTML = output;
+    });
+}
+
+function toDo() {
+  fetch(jsonApi)
+    .then((res) => res.json())
+    .then((data) => {
+      let output = '<p>To do:</p>';
+      data.forEach(function (task) {
+        output += `
+        <ul>
+          <li>Completed: ${task.title}</li>
+          <li>Status: ${task.completed}</li>
+        </ul>
+      `;
+      });
+      document.getElementById('display').innerHTML = output;
+    });
+}
+
+// Use tables instead of lists?
