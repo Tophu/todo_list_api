@@ -12,7 +12,7 @@ document.getElementById('view-all').addEventListener('click', getTitle);
 document.getElementById('completedToDo').addEventListener('click', completed);
 document.getElementById('tasksToDo').addEventListener('click', toDo);
 
-const jsonApi = 'http://localhost:3000/api/todos';
+let jsonApi = 'http://localhost:3000/api/todos';
 
 function getTitle() {
   // fetch('../data.json')
@@ -24,7 +24,7 @@ function getTitle() {
   //   });
   // fetch('../data.json')
   // fetch('http://localhost:3000/api/todos')
-  fetch(jsonApi)
+  fetch('../data.json')
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>All To Do:</p>';
@@ -41,7 +41,7 @@ function getTitle() {
 
 
 function completed() {
-  fetch(jsonApi)
+  fetch('../data.json')
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>Completed:</p>';
@@ -58,7 +58,7 @@ function completed() {
 }
 
 function toDo() {
-  fetch(jsonApi)
+  fetch('../data.json')
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>To do:</p>';
@@ -75,3 +75,4 @@ function toDo() {
 }
 
 // Use tables instead of lists?
+
