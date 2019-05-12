@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  background: url('../img/todo_bg.jpg');
+}
+
+#wrapper {
+  margin-left:auto;
+  margin-right:auto;
+  width:960px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 150px 0 150px 0;
+  h1 {
+    text-align: center;
+    color: #88b4b9;
+    font-size: 3rem;
+  }
+  .btns {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .todo-container {
+    padding: 2rem;
+    border: #5c848e solid 0.5px;
+    border-radius: 4px;
+    width: 588px;
+    box-shadow: 4px 3px 4px -4px;
+    background: rgba($color: #f2f2f2, $alpha: 0.6);
+    // position: fixed;
+    li {
+    color: #88b4b9;
+    list-style-type: circle;
+    }
+    h2 {
+      text-align: center;
+      color: #5c848e;
+    }
+    i {
+      transition: 0.3s; 
+      &:hover {
+        color: #e6d9c8;
+      }
+    }
+  }
+}
+
+.btns {
+  button {
+    padding: 0.5rem;
+    margin: 0 4px 0 4px;
+    background: #e6d9c8;
+    border-radius: 2px;
+    color: #5c848e;
+    transition: 0.3s; 
+    &:hover {
+      background:  #88b4b9;
+      color: aliceblue;
+    }
+  }
+}
