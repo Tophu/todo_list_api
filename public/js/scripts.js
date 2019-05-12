@@ -13,7 +13,7 @@ document.getElementById('completedToDo').addEventListener('click', completed);
 document.getElementById('tasksToDo').addEventListener('click', toDo);
 
 // let jsonApi = 'http://localhost:3000/api/todos';
-let jsonApi = '../data.json';
+const jsonApi = new Request('../../data.json');
 
 function getTitle() {
   fetch(jsonApi)
@@ -33,11 +33,14 @@ function getTitle() {
 }
 
 function completed() {
-  fetch('../data.json')
+  fetch(jsonApi)
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>Completed:</p>';
       data.forEach(function (task) {
+        if (task.completed !== true) {
+          return task
+        };
         output += `
         <ul>
           <li>Completed: ${task.title}</li>
@@ -50,11 +53,14 @@ function completed() {
 }
 
 function toDo() {
-  fetch('../data.json')
+  fetch(jsonApi)
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>To do:</p>';
       data.forEach(function (task) {
+        if (task.completed === true) {
+          return task
+        };
         output += `
         <ul>
           <li>Completed: ${task.title}</li>
