@@ -3,6 +3,12 @@ document.getElementById('completedToDo').addEventListener('click', completed);
 document.getElementById('tasksToDo').addEventListener('click', toDo);
 
 const jsonData = new Request('../../data.json');
+
+
+// Unfortunately the code works using VSCode Live Server and not on localhost.
+// Feedback would be appreciated.
+
+
 // USE IMPORT INSTEAD OF MAKING A NEW REQUEST
 // import jsonData from '../../data.json';
 // USE JSON.parse INSTEAD OF FETCH
