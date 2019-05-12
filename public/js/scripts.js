@@ -12,15 +12,15 @@ document.getElementById('view-all').addEventListener('click', getTitle);
 document.getElementById('completedToDo').addEventListener('click', completed);
 document.getElementById('tasksToDo').addEventListener('click', toDo);
 
-// let jsonApi = 'http://localhost:3000/api/todos';
-const jsonApi = new Request('../../data.json');
+// let jsonData = 'http://localhost:3000/api/todos';
+const jsonData = new Request('../../data.json');
 
 function getTitle() {
-  fetch(jsonApi)
+  fetch(jsonData)
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>All To Do:</p>';
-      data.forEach(function (task) {
+      data.sort((a, b) => b - a).forEach(function (task) {
         // data.reverse();
         output += `
           <ul>
@@ -33,7 +33,7 @@ function getTitle() {
 }
 
 function completed() {
-  fetch(jsonApi)
+  fetch(jsonData)
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>Completed:</p>';
@@ -53,7 +53,7 @@ function completed() {
 }
 
 function toDo() {
-  fetch(jsonApi)
+  fetch(jsonData)
     .then((res) => res.json())
     .then((data) => {
       let output = '<p>To do:</p>';
@@ -63,7 +63,7 @@ function toDo() {
         };
         output += `
         <ul>
-          <li>Completed: ${task.title}</li>
+          <li>To Do: ${task.title}</li>
           <li>Status: ${task.completed}</li>
         </ul>
       `;
